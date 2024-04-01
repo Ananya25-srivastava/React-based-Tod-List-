@@ -5,6 +5,8 @@ import Todo from './Todo';
 
 function TodoList() {
   const [todos, setTodos] = useState([]);
+    
+  // add todo
 
   const addTodo = todo => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
@@ -16,6 +18,8 @@ function TodoList() {
     setTodos(newTodos);
     console.log(...todos);
   };
+   
+  // update the value
 
   const updateTodo = (todoId, newValue) => {
     if (!newValue.text || /^\s*$/.test(newValue.text)) {
@@ -24,12 +28,16 @@ function TodoList() {
 
     setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)));
   };
+  
+  // delete a todo 
 
   const removeTodo = id => {
     const removedArr = [...todos].filter(todo => todo.id !== id);
 
     setTodos(removedArr);
   };
+
+  // completion after updating a particular item
 
   const completeTodo = id => {
     let updatedTodos = todos.map(todo => {
